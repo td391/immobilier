@@ -6,6 +6,7 @@ import RealEstate
 import time
 import os
 import configparser
+import pandas as pd
 
 
 ###
@@ -17,7 +18,7 @@ config.read('config.ini')
 MODE = config['DEFAULT']['Mode']
 # Get the rent or buy config depending on the mode
 RENT_OR_BUY_CONFIG = config[MODE]
-# Check if mode is buy or rent, default to buy
+# Check if mode is buy or rent, default to buy
 if MODE is None or MODE != 'rent':
     MODE = 'buy'
 # Output path
@@ -25,7 +26,7 @@ OUTPUT_PATH = config['DEFAULT']['OutputPath']
 # Write results in files (CSV, XML, XLSX)
 WRITE_FILES = config['DEFAULT'].get('WriteFiles', True)
 # Create the filepath
-timestr = time.strftime("%Y%m%d-%H%M%S")
+timestr = time.strftime("%Y%m%d_")
 OUTPUT_FILEPATH = os.path.abspath(os.path.join(
     OUTPUT_PATH, "seloger-" + MODE + "-" + timestr))
 
@@ -53,6 +54,7 @@ def main():
         df.to_excel(OUTPUT_FILEPATH + '.xlsx', index=False, sheet_name='data')
 
     print("Done - Success!")
+    return df
 
 
 def print_info_on_df(df):
@@ -66,6 +68,7 @@ def print_info_on_df(df):
     print(df.info())
     print("------- DTYPES")
     print(df.dtypes)
+
     print("------- COLUMNS")
     print(df.columns)
     print("------- VALUES")
@@ -81,4 +84,6 @@ def print_info_on_df(df):
     # See https://pandas.pydata.org/pandas-docs/stable/10min.html
 
 
-main()
+# %%
+df_ = main()  # pd.read_csv(OUTPUT_FILEPATH + ".csv")
+print_info_on_df(df_)
