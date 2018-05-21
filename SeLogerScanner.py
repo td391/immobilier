@@ -2,7 +2,6 @@
 This is the main class to retrieve real estates announces on SeLoger and convert them in a CSV file.
 """
 import SeLogerService
-import RealEstate
 import time
 import os
 import configparser
@@ -26,7 +25,7 @@ OUTPUT_PATH = config['DEFAULT']['OutputPath']
 # Write results in files (CSV, XML, XLSX)
 WRITE_FILES = config['DEFAULT'].get('WriteFiles', True)
 # Create the filepath
-timestr = time.strftime("%Y%m%d_")
+timestr = time.strftime("%Y%m%d-%H%M")
 OUTPUT_FILEPATH = os.path.abspath(os.path.join(
     OUTPUT_PATH, "seloger-" + MODE + "-" + timestr))
 
