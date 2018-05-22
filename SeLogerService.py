@@ -21,7 +21,7 @@ class SeLogerService: # SeLoger service
         self.CONFIG.read('config.ini')
         # Mode should be rent or buy, default to buy
         self.MODE = self.CONFIG['DEFAULT']['Mode']
-        # Check if mode is buy or rent, default to buy
+        # Check if mode is buy or rent, default to buy
         if self.MODE is None or self.MODE != 'rent':
             self.MODE = 'buy'
         # Get the rent or buy config depending on the mode
@@ -128,6 +128,7 @@ class SeLogerService: # SeLoger service
         Return the cleaned dataframe
         """
         selection = [
+            'cp',
             'titre',
             'libelle',
             'descriptif',

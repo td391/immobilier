@@ -58,7 +58,6 @@ def main():
 
 def print_info_on_df(df):
     """Just to print some info on the dataframe, for testing purpose"""
-    df = df.infer_objects()
     print("------- HEAD")
     print(df.head())
     print("------- DESCRIBE")
@@ -85,4 +84,4 @@ def print_info_on_df(df):
 
 # %%
 df_ = main()  # pd.read_csv(OUTPUT_FILEPATH + ".csv")
-print_info_on_df(df_)
+print_info_on_df(df_.infer_objects())
