@@ -5,3 +5,4 @@ search-mini.xml
 search-small.xml
 .vscode/*
 __pycache__/*
+.spyproject
