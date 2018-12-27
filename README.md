@@ -1,5 +1,15 @@
 # README
 
+## Run
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -U pip
+pip install pandas requests openpyxl
+python SeLogerScanner.py
+```
+
+
 ## Idées
 
 - OK - Utiliser un dataframe Pandas pour faire quelques stats.
